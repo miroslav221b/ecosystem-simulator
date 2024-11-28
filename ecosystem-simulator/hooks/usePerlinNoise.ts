@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { createNoise2D } from "simplex-noise";
+import { v4 as uuidv4 } from "uuid";
+
 function createComplexNoise() {
   return {
     main: createNoise2D(),
     sub: createNoise2D(),
+    id: uuidv4(),
   };
 }
 export default function usePerlinNoise() {
@@ -18,5 +21,5 @@ export default function usePerlinNoise() {
   function regenerate() {
     setNoise(createComplexNoise());
   }
-  return { get, regenerate };
+  return { get, regenerate, id: noise.id };
 }
