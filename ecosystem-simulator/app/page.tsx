@@ -18,10 +18,10 @@ import { Input } from "@/components/ui/input";
 export default function Home() {
   const [scale, setScale] = useState<number>(5);
   const [renderAmount, setRenderAmount] = useState(100);
-  const [isStepsRendering, setIsStepsRendering] = useState<boolean>(false);
   const { steps, ...simulation } = useSimulation({
     mapSize: 150,
   });
+
   const activeStep = steps[simulation.activeTime];
   return (
     <div className=" h-screen w-full grid grid-cols-3 gap-5">
@@ -63,10 +63,7 @@ export default function Home() {
 
               <Button
                 onClick={() => {
-                  setIsStepsRendering(true);
-                  simulation.generateSteps(renderAmount).then((slides) => {
-                    setIsStepsRendering(false);
-                  });
+                  simulation.generateSteps(renderAmount);
                 }}
               >
                 Render new slides
