@@ -2,7 +2,7 @@ import { PositionKeyType } from "@/features/map/types/map";
 import { PositionType } from "@/types/baseTypes";
 
 export function calculateDistance(from: PositionType, to: PositionType) {
-  return Math.abs(from.x - to.x) + Math.abs(to.y - to.y);
+  return Math.abs(from.x - to.x) + Math.abs(from.y - to.y);
 }
 export function sortByDistanceToObj(
   a: PositionType,
